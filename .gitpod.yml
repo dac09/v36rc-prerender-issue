@@ -1,0 +1,21 @@
+# Learn more about this file at https://www.gitpod.io/docs/references/gitpod-yml
+checkoutLocation: redwood
+workspaceLocation: .
+
+tasks:
+  - name: "Dev Servers"
+    before: export RW_PATH="/workspace/redwood"
+    init: |
+      yarn install
+#      yarn run build:test-project ../redwood-app --typescript --link --verbose
+    command: |
+      cd ../redwood-app
+      yarn rw dev
+  - name: Terminal
+    openMode: split-right
+
+ports:
+  - port: 8911
+    onOpen: ignore
+  - port: 8910
+    onOpen: open-preview
